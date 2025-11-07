@@ -81,22 +81,22 @@ export default function Home() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {[
               {
-                title: 'Klasik Saç Kesimi',
-                description: 'Profesyonel saç kesimi ve şekillendirme',
-                price: '150₺',
+                title: 'SAÇ',
+                description: 'Profesyonel saç kesimi',
+                price: '400₺',
                 duration: '30 dk',
               },
               {
-                title: 'Saç + Sakal Kombo',
-                description: 'Saç kesimi ve sakal düzeltme paketi',
-                price: '220₺',
-                duration: '45 dk',
+                title: 'SAÇ+SAKAL+YIKAMA+FÖN',
+                description: 'Komple bakım paketi',
+                price: '500₺',
+                duration: '60 dk',
               },
               {
-                title: 'Cilt Bakımı',
-                description: 'Yüz temizliği ve cilt bakımı',
-                price: '200₺',
-                duration: '40 dk',
+                title: 'SAÇ+SAKAL+YIKAMA+FÖN+YÜZ BAKIM+SAÇ BAKIM',
+                description: 'Premium bakım paketi',
+                price: '600₺',
+                duration: '90 dk',
               },
             ].map((service, index) => (
               <Card key={index} className="hover:scale-105 transition-transform cursor-pointer">
