@@ -1,65 +1,177 @@
-import Image from "next/image";
+import Link from 'next/link'
+import { Button } from '@/components/ui/button'
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
+import { Scissors, Clock, Users, Star, Calendar, MapPin, Phone } from 'lucide-react'
 
 export default function Home() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
+    <div className="min-h-screen">
+      {/* Hero Section */}
+      <section className="relative h-[600px] flex items-center justify-center overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-black via-zinc-900 to-black" />
+        
+        <div className="relative z-10 container mx-auto px-4 text-center">
+          <h1 className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-[#C4A747] via-[#D4B857] to-[#C4A747] bg-clip-text text-transparent animate-fade-in">
+            Furkan Emer
           </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+          <p className="text-xl md:text-2xl text-zinc-300 mb-8 max-w-2xl mx-auto">
+            Profesyonel erkek kuaförü ve bakım merkezi. Modern tarzda hizmet veren, deneyimli ekibimizle sizlere en iyi hizmeti sunuyoruz.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Link href="/calendar">
+              <Button size="lg" className="text-lg">
+                <Calendar className="w-5 h-5 mr-2" />
+                Randevu Takvimine Göz At
+              </Button>
+            </Link>
+            <Link href="/services">
+              <Button size="lg" variant="outline" className="text-lg">
+                <Scissors className="w-5 h-5 mr-2" />
+                Hizmetlerimiz
+              </Button>
+            </Link>
+          </div>
+        </div>
+
+        {/* Decorative elements */}
+        <div className="absolute top-20 left-10 w-20 h-20 border-2 border-[#C4A747] rounded-full opacity-20 animate-pulse" />
+        <div className="absolute bottom-20 right-10 w-32 h-32 border-2 border-[#C4A747] rounded-full opacity-20 animate-pulse delay-1000" />
+      </section>
+
+      {/* Stats Section */}
+      <section className="py-16 bg-zinc-900/50">
+        <div className="container mx-auto px-4">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+            {[
+              { icon: Users, label: 'Mutlu Müşteri', value: '5000+' },
+              { icon: Scissors, label: 'Yıllık Deneyim', value: '15+' },
+              { icon: Star, label: 'Uzman Berber', value: '8' },
+              { icon: Clock, label: 'Çalışma Saati', value: '09:00-20:00' },
+            ].map((stat, index) => (
+              <div key={index} className="text-center">
+                <stat.icon className="w-12 h-12 text-[#C4A747] mx-auto mb-4" />
+                <div className="text-3xl font-bold text-white mb-2">{stat.value}</div>
+                <div className="text-zinc-400">{stat.label}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* About Section */}
+      <section className="py-20 container mx-auto px-4">
+        <div className="max-w-4xl mx-auto text-center">
+          <h2 className="text-4xl md:text-5xl font-bold mb-6 text-white">Hakkımızda</h2>
+          <p className="text-lg text-zinc-300 leading-relaxed">
+            Furkan Emer, modern erkek bakımının tüm gereksinimlerini karşılayan profesyonel bir kuaför ve bakım merkezidir. 
+            Deneyimli ekibimiz, en son trendleri takip ederek sizlere özel hizmet sunmaktadır. 
+            Hijyen ve müşteri memnuniyeti bizim için her zaman önceliklidir.
           </p>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+      </section>
+
+      {/* Featured Services */}
+      <section className="py-20 bg-zinc-900/30">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-12">
+            <h2 className="text-4xl md:text-5xl font-bold mb-4 text-white">Popüler Hizmetlerimiz</h2>
+            <p className="text-zinc-400 text-lg">En çok tercih edilen hizmetlerimiz</p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {[
+              {
+                title: 'Klasik Saç Kesimi',
+                description: 'Profesyonel saç kesimi ve şekillendirme',
+                price: '150₺',
+                duration: '30 dk',
+              },
+              {
+                title: 'Saç + Sakal Kombo',
+                description: 'Saç kesimi ve sakal düzeltme paketi',
+                price: '220₺',
+                duration: '45 dk',
+              },
+              {
+                title: 'Cilt Bakımı',
+                description: 'Yüz temizliği ve cilt bakımı',
+                price: '200₺',
+                duration: '40 dk',
+              },
+            ].map((service, index) => (
+              <Card key={index} className="hover:scale-105 transition-transform cursor-pointer">
+                <CardHeader>
+                  <CardTitle className="text-[#C4A747]">{service.title}</CardTitle>
+                  <CardDescription>{service.description}</CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <div className="flex justify-between items-center">
+                    <div className="text-2xl font-bold text-white">{service.price}</div>
+                    <div className="flex items-center text-zinc-400">
+                      <Clock className="w-4 h-4 mr-1" />
+                      {service.duration}
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+
+          <div className="text-center mt-12">
+            <Link href="/services">
+              <Button size="lg" variant="outline">
+                Tüm Hizmetleri Gör
+              </Button>
+            </Link>
+          </div>
         </div>
-      </main>
+      </section>
+
+      {/* CTA Section */}
+      <section className="py-20 container mx-auto px-4">
+        <Card className="bg-gradient-to-r from-[#C4A747] to-[#D4B857] border-none text-black">
+          <CardContent className="p-12 text-center">
+            <h2 className="text-4xl font-bold mb-4">Randevunuzu Hemen Alın</h2>
+            <p className="text-lg mb-8 opacity-90">
+              Online randevu sistemi ile kolayca yerinizi ayırtın. Müsait saatleri görün ve size uygun zamanı seçin.
+            </p>
+            <Link href="/calendar">
+              <Button size="lg" variant="secondary" className="text-lg">
+                <Calendar className="w-5 h-5 mr-2" />
+                Takvimi Görüntüle
+              </Button>
+            </Link>
+          </CardContent>
+        </Card>
+      </section>
+
+      {/* Contact Section */}
+      <section className="py-20 bg-zinc-900/50">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-12">
+            <h2 className="text-4xl md:text-5xl font-bold mb-4 text-white">İletişim</h2>
+            <p className="text-zinc-400 text-lg">Bize ulaşın, size yardımcı olalım</p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
+            <div className="text-center">
+              <MapPin className="w-12 h-12 text-[#C4A747] mx-auto mb-4" />
+              <h3 className="text-xl font-semibold text-white mb-2">Adres</h3>
+              <p className="text-zinc-400">Atatürk Caddesi No:123<br />İstanbul</p>
+            </div>
+            <div className="text-center">
+              <Phone className="w-12 h-12 text-[#C4A747] mx-auto mb-4" />
+              <h3 className="text-xl font-semibold text-white mb-2">Telefon</h3>
+              <p className="text-zinc-400">+90 212 555 0123</p>
+            </div>
+            <div className="text-center">
+              <Clock className="w-12 h-12 text-[#C4A747] mx-auto mb-4" />
+              <h3 className="text-xl font-semibold text-white mb-2">Çalışma Saatleri</h3>
+              <p className="text-zinc-400">Pazartesi - Cumartesi<br />09:00 - 20:00</p>
+            </div>
+          </div>
+        </div>
+      </section>
     </div>
-  );
+  )
 }

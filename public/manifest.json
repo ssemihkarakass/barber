@@ -1,0 +1,49 @@
+{
+  "name": "Furkan Emer - Randevu Sistemi",
+  "short_name": "Furkan Emer",
+  "description": "Profesyonel berber randevu sistemi",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#000000",
+  "theme_color": "#C4A747",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "/screenshot1.png",
+      "sizes": "540x720",
+      "type": "image/png",
+      "form_factor": "narrow"
+    }
+  ],
+  "categories": ["business", "lifestyle"],
+  "shortcuts": [
+    {
+      "name": "Randevu Al",
+      "short_name": "Randevu",
+      "description": "Hızlı randevu oluştur",
+      "url": "/book",
+      "icons": [{ "src": "/icon-192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Takvim",
+      "short_name": "Takvim",
+      "description": "Randevu takvimini görüntüle",
+      "url": "/calendar",
+      "icons": [{ "src": "/icon-192.png", "sizes": "192x192" }]
+    }
+  ]
+}
