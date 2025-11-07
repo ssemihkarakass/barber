@@ -2,12 +2,13 @@
 
 import { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
-import { Calendar as CalendarIcon, Clock, User, Scissors, ChevronLeft, ChevronRight, ArrowLeft } from 'lucide-react'
+import { Calendar as CalendarIcon, Clock, User, Scissors, ChevronLeft, ChevronRight, ArrowLeft, Check } from 'lucide-react'
 import { createClient } from '@/lib/supabase/client'
 import { format, addDays, startOfWeek, isSameDay, parseISO } from 'date-fns'
 import { tr } from 'date-fns/locale'
+import { sendNotification } from '@/lib/notifications'
 import Link from 'next/link'
 
 export default function BookAppointmentPage() {
@@ -215,19 +216,10 @@ export default function BookAppointmentPage() {
       if (error) throw error
       
       // Send web push notification
-      if ('Notification' in window && Notification.permission === 'granted') {
-        new Notification('🎉 Randevu Oluşturuldu!', {
-          body: `${selectedService.name} - ${format(selectedDate, 'd MMMM', { locale: tr })} ${selectedTime}`,
-          icon: '/icon-192.png',
-          badge: '/icon-192.png',
-          tag: 'appointment-created'
-        })
-        
-        // Vibrate
-        if ('vibrate' in navigator) {
-          navigator.vibrate([200, 100, 200])
-        }
-      }
+      sendNotification('🎉 Randevu Oluşturuldu!', {
+        body: `${selectedService.name} - ${format(selectedDate, 'd MMMM', { locale: tr })} ${selectedTime}`,
+        tag: 'appointment-created'
+      })
       
       // Send notification to employee
       try {
